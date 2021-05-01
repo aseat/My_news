@@ -3,7 +3,7 @@
 
   <div class='form-group'>
     {{ Form::label('keyword', 'キーワード：') }}
-    {{ Form::text('keyword', null, ['class' => 'form-control'], ['placeholder'=>'キーワードから記事を検索できます']) }}
+    {{ Form::text('keyword', null, ['class' => 'form-control' ,'style' => "width: 526px;"], ['placeholder'=>'キーワードから記事を検索できます']) }}
   </div>
 
   <div class='form-group'>

@@ -77,7 +77,7 @@
       <div class="col-4 d-flex justify-content-end align-items-center">
          <a class="btn btn-sm btn-outline-secondary" href="register" style="color: #ffffff; border-color: #ffffff;">新規登録</a>
          <a class="btn btn-sm btn-outline-secondary" href="login" style="color: #ffffff; border-color: #ffffff;">ログイン</a>
-         <a class="btn btn-sm btn-outline-secondary" href="login/guest" style="color: #ffffff; border-color: #ffffff;">ゲストログイン</a>
+         <a class="btn btn-sm btn-outline-secondary" href="guest" style="color: #ffffff; border-color: #ffffff;">ゲストログイン</a>
 
    
          @else
