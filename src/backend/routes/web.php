@@ -24,6 +24,10 @@ Route::delete('/post/{id}', [App\Http\Controllers\PostController::class, 'destro
 Route::get('/post/edit/{id}', [App\Http\Controllers\PostController::class, 'edit'])->name('post.edit');         // 編集ページ表示
 Route::post('/post/update/{id}', [App\Http\Controllers\PostController::class, 'update'])->name('post.update');  // 更新
 
+Route::group(['middleware' => 'auth'], function() {
+    Route::get('/post/{id}', 'PostController@showCreateForm')->name('posts.create');
+    Route::post('/post/new', 'PostController@create');
+ });
 
 Auth::routes();
 
