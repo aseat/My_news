@@ -1,6 +1,11 @@
 version: '3.3'
 
 services:
+  app:
+    build: ./infra/php
+    volumes:
+      - ./backend:/work
+      
   php:
     build: .
     volumes:
