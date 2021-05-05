@@ -12,6 +12,8 @@
             <div class="card-body">
               <p class="card-text">{{ $post->title }}</p>
               <p class="card-text">{{ $post->text }}</p>
+              @auth
+              @if( ( Auth::getUser()->id == $post->$user_id ) )
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <a type="button" class="btn btn-sm btn-outline-secondary" href='{{ route("post.list") }}'>戻る</a>
@@ -20,7 +22,10 @@
                   {{ Form::button('<a class="btn btn-sm btn-outline-secondary">削除</a>', ['class' => "btn", 'type' => 'submit']) }}
                   {{ Form::close() }}
                 </div>
+                @endif
+                @endauth
                 <small class="text-muted">{{ $post->created_at }}</small>
+                <small class="text-muted">{{ $post->text}}</small>
               </div>
             </div>
           </div>
