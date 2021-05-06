@@ -12,20 +12,18 @@
             <div class="card-body">
               <p class="card-text">{{ $post->title }}</p>
               <p class="card-text">{{ $post->text }}</p>
-              @auth
-              @if( ( Auth::getUser()->id == $post->$user_id ) )
+              
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <a type="button" class="btn btn-sm btn-outline-secondary" href='{{ route("post.list") }}'>戻る</a>
                   <a type="button" class="btn btn-sm btn-outline-secondary" href='{{ route("post.edit", ["id" => $post->id]) }}'>編集</a>
-                  {{ Form::open(['method' => 'delete', 'route' => ['post.delete', $post->id]]) }}
-                  {{ Form::button('<a class="btn btn-sm btn-outline-secondary">削除</a>', ['class' => "btn", 'type' => 'submit']) }}
-                  {{ Form::close() }}
                 </div>
-                @endif
-                @endauth
+                {{ Form::open(['method' => 'delete', 'route' => ['post.delete', $post->id]]) }}
+                {{ Form::button('<a class="btn btn-sm btn-outline-secondary">削除</a>', ['class' => "btn", 'type' => 'submit']) }}
+                {{ Form::close() }}
                 <small class="text-muted">{{ $post->created_at }}</small>
-                <small class="text-muted">{{ $post->text}}</small>
+                {{-- <small class="text-muted">{{ $post->user_name}}</small> --}}
+    
               </div>
             </div>
           </div>

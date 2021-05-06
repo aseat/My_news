@@ -16,6 +16,11 @@ Route::get('/', function () {
     return view('posts/index');
 });
 
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('guest', 'Auth\LoginController@guestLogin')->name('login.guest');
+
 Route::get('/', [App\Http\Controllers\PostController::class, 'index'])->name('post.list');                 // 一覧表示ページ
 Route::group(['middleware' => ['auth']], function() {
 Route::get('/post/new', [App\Http\Controllers\PostController::class, 'create'])->name('post.new');              // 新規投稿ページ
@@ -27,9 +32,3 @@ Route::delete('/post/{id}', [App\Http\Controllers\PostController::class, 'destro
 Route::get('/post/edit/{id}', [App\Http\Controllers\PostController::class, 'edit'])->name('post.edit');         // 編集ページ表示
 Route::post('/post/update/{id}', [App\Http\Controllers\PostController::class, 'update'])->name('post.update');  // 更新
 });
-
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('guest', 'Auth\LoginController@guestLogin')->name('login.guest');

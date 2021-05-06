@@ -31,6 +31,7 @@
                   
                 </div>
                 <small class="text-muted">{{ $post->created_at }}</small>
+                <small class="text-muted">{{ $post->user_name }}</small>
               </div>
             </div>
           </div>
