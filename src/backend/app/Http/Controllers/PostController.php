@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index']);
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -45,7 +52,8 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $post = new Post();                   
+        $post = new Post(); 
+        $post->user_id = $request->user()->id;                  
         $post->title = $request->title;      
         $post->text = $request->text;  
         $post->save();                           

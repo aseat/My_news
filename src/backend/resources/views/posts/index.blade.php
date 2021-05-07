@@ -28,10 +28,10 @@
               <a class="card-text" href="{{ route("post.show", ["id" =>  $post->id]) }}">{{ $post->title }}</a>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  
+                  <small class="text-muted">{{ $post->created_at }}</small>
                 </div>
-                <small class="text-muted">{{ $post->created_at }}</small>
-                <small class="text-muted">{{ $post->user_name }}</small>
+                <small class="text-muted">{{ $post->user_id }}</small>
+                
               </div>
             </div>
           </div>

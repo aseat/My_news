@@ -26,7 +26,7 @@
                         {{ Form::text('text', null, ['placeholder'=>'内容を入力']) }}
                         </div>
                       </div>
-  
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                               {{ Form::submit('投稿ボタン', ['class' => 'btn btn-primary']) }}
