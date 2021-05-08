@@ -2,6 +2,16 @@
 
 return [
 
+    
+    'providers' => [
+        // ...
+        JD\Cloudder\CloudderServiceProvider::class
+    ],
+    
+    'aliases' => [
+        // ...
+        'Cloudder' => JD\Cloudder\Facades\Cloudder::class,
+    ],
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -229,5 +239,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
     ],
+
 
 ];

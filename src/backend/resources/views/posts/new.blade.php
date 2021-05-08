@@ -10,7 +10,7 @@
   
                 <div class="card-body">
                    
-                        {{ Form::open(['route' => 'post.store']) }}
+                        {{ Form::open(['route' => 'post.store','enctype'  => "multipart/form-data"]) }}
                         <div class="form-group row">
                             <div class="col-md-6">
                               {{ Form::label('title', 'タイトル   ') }}
@@ -26,7 +26,13 @@
                         {{ Form::text('text', null, ['placeholder'=>'内容を入力']) }}
                         </div>
                       </div>
-
+                      <div class="form-group row">
+                        <div class="col-md-6">
+                          {{ Form::label('image', '画像   ') }}
+                     
+                      {{ Form::file('image', null, ['placeholder'=>'内容を入力']) }}
+                    </div>
+                  </div>
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                               {{ Form::submit('投稿ボタン', ['class' => 'btn btn-primary']) }}

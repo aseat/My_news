@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\User;
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use JD\Cloudder\Facades\Cloudder;
 
 class PostController extends Controller
 {
@@ -40,6 +42,8 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request){
+        $user_id = Auth::id();
+
         $message = '投稿フォーム： ';
         return view('posts/new', ['message'=>$message]);
     }
@@ -55,7 +59,22 @@ class PostController extends Controller
         $post = new Post(); 
         $post->user_id = $request->user()->id;                  
         $post->title = $request->title;      
-        $post->text = $request->text;  
+        $post->text = $request->text; 
+        if ($image = $request->file('image')) {
+            $image_path = $image->getRealPath();
+            Cloudder::upload($image_path, null);
+            //直前にアップロードされた画像のpublicIdを取得する。
+            $publicId = Cloudder::getPublicId();
+            $logoUrl = Cloudder::secureShow($publicId, [
+                'width'     => 200,
+                'height'    => 200
+            ]);
+            $post->image_path = $logoUrl;
+            $post->public_id  = $publicId;
+        }
+ 
+
+
         $post->save();                           
  
         return redirect('/');
@@ -95,6 +114,18 @@ class PostController extends Controller
     public function update(Request $request, $id, Post $post)
     {
         $post = Post::find($id);
+        if ($image = $request->file('image')) {
+            $image_path = $image->getRealPath();
+            Cloudder::upload($image_path, null);
+            //直前にアップロードされた画像のpublicIdを取得する。
+            $publicId = Cloudder::getPublicId();
+            $logoUrl = Cloudder::secureShow($publicId, [
+                'width'     => 500,
+                'height'    => 500
+            ]);
+            $post->image_path = $logoUrl;
+            $post->public_id  = $publicId;
+        }
         $post->title = $request->title;
         $post->text = $request->text;
         $post->save();
@@ -109,7 +140,11 @@ class PostController extends Controller
      */
     public function destroy(Request $request, $id, Post $post)
     {
-        $post = Post::find($id);   
+        $post = Post::find($id); 
+        if(isset($post->public_id)){
+            Cloudder::destroyImage($post->public_id);
+        }
+  
         $post->delete();              
         return redirect('/');
     }

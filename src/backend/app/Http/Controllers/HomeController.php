@@ -23,6 +23,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $user = $request->user();
+    $posts = $user->load('posts');
+    return view('home', ['posts'=>$posts->posts]);
     }
 }
