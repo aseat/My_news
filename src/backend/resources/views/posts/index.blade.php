@@ -2,30 +2,59 @@
 @endcomponent
 <main>
 
-  <section class="py-5 text-center container">
-    <div class="row py-lg-5">
+  
+
+      <img src="/images/4353519_m.jpg" style="height: 550px; width: 100%;">
       <div class="col-lg-6 col-md-8 mx-auto">
-        <h1 class="fw-light">MyNews</h1>
-        <p class="lead text-muted">最近あった出来事を共有するサービスです！</p>
+        <h1 class="fw-light" style="position: absolute;
+        color: #39f520;
+        top: 0;
+        left: 0;
+        top: 40%;
+        left: 50%;
+        -ms-transform: translate(-50%,-50%);
+        -webkit-transform: translate(-50%,-50%);
+        transform: translate(-50%,-50%);
+        margin:0;
+        padding:0;
+        text-align: center;
+        font-size: 120px;
+        text-shadow: 3px 4px 5px #808080;">MyNews</h1>
+        <p>
+        <h1 class="fw-light" style="position: absolute;
+        color: #39f520;
+        top: 0;
+        left: 0;
+        top: 55%;
+        left: 50%;
+        -ms-transform: translate(-50%,-50%);
+        -webkit-transform: translate(-50%,-50%);
+        transform: translate(-50%,-50%);
+        margin:0;
+        padding:0;
+        text-align: center;
+        font-size: 40px;
+        width: 1000px;
+        text-shadow: 3px 4px 5px #808080;">最近の出来事や話題を共有するサイト</h1>
+      
        
       </div>
-    </div>
-  </section>
+   
+ 
  
       
   <div class="album py-5 bg-light">
     <div class="container">
-      <h1 style="text-align: center;">@include('posts/search')</h1>
+      <h1 style="text-align: center; font-size: 20px;">@include('posts/search')</h1>
       <p>  
-      <h1 style="text-align: center;">  新着投稿</h1>
+      <h1 style="text-align: center;"> 新着記事</h1>
       <p>
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
      
         @foreach ($posts as $post)
         <div class="col">
           <div class="card shadow-sm">
-        
-            <img src="{{ $post->image_path }}" alt="画像">
+            <img src="{{ $post->image_path }}" alt="画像" >
             <div class="card-body">
               <a class="card-text" href="{{ route("post.show", ["id" =>  $post->id]) }}">{{ $post->title }}</a>
               <div class="d-flex justify-content-between align-items-center">
