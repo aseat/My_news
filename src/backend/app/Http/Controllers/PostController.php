@@ -157,16 +157,14 @@ class PostController extends Controller
      */
     public function destroy(Request $request, $id, Post $post)
     {
-        if(\Auth::user()->id == $post->user_id){
+        
         $post = Post::find($id); 
         if(isset($post->public_id)){
             Cloudder::destroyImage($post->public_id);
         }
       $post->delete();
       return redirect('/');   
-    }else{
-        return redirect()->route('post.show', ['id' => $post->id]);
-      }           
+            
         
     }
 }
