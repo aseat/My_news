@@ -25,7 +25,7 @@ class PostController extends Controller
     {
         if ($request->filled('keyword')) {
             $keyword = $request->input('keyword');
-            $posts = Post::where('title', 'like', '%'.$keyword.'%')->get();
+            $posts = Post::where('title', 'like', '%'.$keyword.'%')->latest()->get();
           }else{
             $posts = Post::latest()->get();
           }

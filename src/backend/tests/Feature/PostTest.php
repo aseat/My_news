@@ -13,6 +13,8 @@ class PostTest extends TestCase
      *
      * @return void
      */
+   
+    
     public function test_example()
     {
         
@@ -22,6 +24,8 @@ class PostTest extends TestCase
         $post->user_id = "1";
         $post->image_path = "https://res.cloudinary.com/dueb2i48f/image/upload/c_fit,h_200,w_200/zsxizljjti5fxlfyklim.png";
         $post->save();
+
+       
 
         $readPost = \App\Post::where('title', 'aaaa')->first();
         $this->assertNotNull($readPost);
@@ -39,6 +43,8 @@ class PostTest extends TestCase
         $this->assertNotNull($readPost);
         $readPost = \App\Post::where('image_path', null )->first();
         $this->assertNotNull($readPost);
+        
 
      }
+
 }
