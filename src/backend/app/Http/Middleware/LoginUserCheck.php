@@ -9,10 +9,10 @@ class LoginUserCheck
 {
     public function handle($request, Closure $next)
     {
-      if(Auth::check()){
-        return $next($request);
-      }else{
-        return redirect(route('login'));
-      }
+        if (Auth::check()) {
+            return $next($request);
+        } else {
+            return redirect(route('login'));
+        }
     }
 }

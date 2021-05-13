@@ -9,7 +9,6 @@ use App\Policies\UserPolicy;
 use App\Post;
 use App\Policies\PostPolicy;
 
-
 class AuthServiceProvider extends ServiceProvider
 {
     /**

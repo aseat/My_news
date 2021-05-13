@@ -6,9 +6,9 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-
 class User extends Authenticatable
 {
+    use Notifiable;
     /**
      * リレーション (1対多の関係)
      *
@@ -16,10 +16,8 @@ class User extends Authenticatable
      */
     public function posts()
     {
-        return $this->hasMany('app\Post'); 
+        return $this->hasMany('app\Post');
     }
-    
-    use Notifiable;
 
     /**
      * The attributes that are mass assignable.

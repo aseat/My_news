@@ -1,0 +1,8 @@
+#!/bin/sh
+
+for FILE in `git diff --staged --name-only | grep .php`; do
+if [ -e $FILE ]; then
+./vendor/bin/php-cs-fixer fix $FILE
+git add $FILE
+fi
+done

@@ -19,7 +19,8 @@
         padding:0;
         text-align: center;
         font-size: 120px;
-        text-shadow: 3px 4px 5px #808080;">MyNews</h1>
+        text-shadow: 3px 4px 5px #808080;
+        font-size: 7.5rem;">MyNews</h1>
         <p>
         <h1 class="fw-light" style="position: absolute;
         color: #39f520;
@@ -35,7 +36,8 @@
         text-align: center;
         font-size: 40px;
         width: 1000px;
-        text-shadow: 3px 4px 5px #808080;">最近の出来事や話題を共有するサイト</h1>
+        text-shadow: 3px 4px 5px #808080;
+        font-size: 2.5rem;">最近の出来事や話題を共有するサイト</h1>
       
        
       </div>

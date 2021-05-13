@@ -46,7 +46,7 @@ class LoginController extends Controller
 
     private const GUEST_USER_ID = 1;
 
-     public function guestLogin()
+    public function guestLogin()
     {
         // id=1 のゲストユーザー情報がDBに存在すれば、ゲストログインする
         if (Auth::loginUsingId(self::GUEST_USER_ID)) {

@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-/**
-     * リレーション (従属の関係)
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-  public function user()
+    /**
+         * リレーション (従属の関係)
+         *
+         * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+         */
+    public function user()
     {
-      return $this->hasOne('App\user', 'id', 'user_id');
+        return $this->hasOne('App\user', 'id', 'user_id');
     }
     protected $fillable = [
       'image_file_name', 'image_title',
@@ -39,5 +39,4 @@ class Post extends Model
             'image.max'      => 'ファイルサイズを10MB以下に設定してください。',
         ];
     }
-    
 }

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\User;
 use App\Post;
 use Illuminate\Http\Request;
@@ -9,7 +10,6 @@ use JD\Cloudder\Facades\Cloudder;
 
 class PostController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth')->except(['index']);
@@ -26,22 +26,22 @@ class PostController extends Controller
         if ($request->filled('keyword')) {
             $keyword = $request->input('keyword');
             $posts = Post::where('title', 'like', '%'.$keyword.'%')->latest()->get();
-          }else{
+        } else {
             $posts = Post::latest()->get();
-          }
-        
-          return view('posts/index', ['posts' => $posts]);
-        
+        }
+
+        return view('posts/index', ['posts' => $posts]);
     }
 
-    
- 
+
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request){
+    public function create(Request $request)
+    {
         $user_id = Auth::id();
 
         $message = '投稿フォーム： ';
@@ -56,10 +56,10 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $post = new Post(); 
-        $post->user_id = $request->user()->id;                  
-        $post->title = $request->title;      
-        $post->text = $request->text; 
+        $post = new Post();
+        $post->user_id = $request->user()->id;
+        $post->title = $request->title;
+        $post->text = $request->text;
         if ($image = $request->file('image')) {
             $image_path = $image->getRealPath();
             Cloudder::upload($image_path, null);
@@ -72,18 +72,20 @@ class PostController extends Controller
             $post->image_path = $logoUrl;
             $post->public_id  = $publicId;
         }
-        $request->validate([
+        $request->validate(
+            [
             'title' => 'required|unique:posts',
             'text' => 'required',
  ],
-         [
+            [
                 'title.required' => 'タイトルを入力してください。',
                 'text.required'  => '内容を入力してください。',
-         ]);
+         ]
+        );
 
 
-        $post->save();                           
- 
+        $post->save();
+
         return redirect('/');
     }
 
@@ -93,8 +95,8 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, $id, Post $post){
-        
+    public function show(Request $request, $id, Post $post)
+    {
         $post = Post::find($id);       // モデルから指定データ取得
         return view('posts/show', ['post' => $post]);
     }
@@ -108,9 +110,9 @@ class PostController extends Controller
     public function edit(Request $request, $id, Post $post)
     {
         $post = Post::find($id);
-        if(\Auth::user()->id == $post->user_id){
-        return view('posts/edit',  ['post'=>$post]);
-        }else{
+        if (\Auth::user()->id == $post->user_id) {
+            return view('posts/edit', ['post'=>$post]);
+        } else {
             return redirect()->route('post.show', ['id' => $post->id]);
         }
     }
@@ -129,7 +131,7 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->text = $request->text;
         if ($image = $request->file('image')) {
-            if(isset($post->public_id)){
+            if (isset($post->public_id)) {
                 Cloudder::destroyImage($post->public_id);
             }
             $image_path = $image->getRealPath();
@@ -143,7 +145,7 @@ class PostController extends Controller
             $post->image_path = $logoUrl;
             $post->public_id  = $publicId;
         }
-        
+
 
         $post->save();
         return redirect()->route('post.show', ['id' => $post->id]);
@@ -157,14 +159,11 @@ class PostController extends Controller
      */
     public function destroy(Request $request, $id, Post $post)
     {
-        
-        $post = Post::find($id); 
-        if(isset($post->public_id)){
+        $post = Post::find($id);
+        if (isset($post->public_id)) {
             Cloudder::destroyImage($post->public_id);
         }
-      $post->delete();
-      return redirect('/');   
-            
-        
+        $post->delete();
+        return redirect('/');
     }
 }

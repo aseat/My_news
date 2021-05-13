@@ -2,12 +2,12 @@
 
 return [
 
-    
+
     'providers' => [
         // ...
         JD\Cloudder\CloudderServiceProvider::class
     ],
-    
+
     'aliases' => [
         // ...
         'Cloudder' => JD\Cloudder\Facades\Cloudder::class,
