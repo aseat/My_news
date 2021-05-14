@@ -16,8 +16,8 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <a type="button" class="btn btn-sm btn-outline-secondary" href='{{ route("post.list") }}'>戻る</a>
-                  @auth
-              @if( ( $post->user_id ) === ( Auth::user()->id ) )
+              @auth
+                  @if( ( $post->user_id ) === ( Auth::user()->id ) )
                   <a type="button" class="btn btn-sm btn-outline-secondary" href='{{ route("post.edit", ["id" => $post->id]) }}'>編集</a>
                 </div>
                 <div class="btn-group">
@@ -27,6 +27,20 @@
               @endif
                 @endauth
               </div> 
+              <div>
+                @auth
+                @if( ( $post->user_id ) !== ( Auth::user()->id ) )
+                @if($post->is_liked_by_auth_user())
+                  <a href="{{ route('post.unlike', ['id' => $post->id]) }}" class="btn btn-success btn-sm">いいね<span class="badge">{{ $post->likes->count() }}</span></a>
+                  {{ $post->likes->count() }}
+                @else
+                  <a href="{{ route('post.like', ['id' => $post->id]) }}" class="btn btn-secondary btn-sm">いいね<span class="badge">{{ $post->likes->count() }}</span></a>
+                  {{ $post->likes->count() }}
+                  @endif
+                  @endif
+                  @endauth
+
+           </div>
             </div> 
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
