@@ -25,6 +25,7 @@ class PostController extends Controller
   */
   public function like($id)
   {
+    $post = Post::find($id);
     Like::create([
       'post_id' => $id,
       'user_id' => Auth::id(),
@@ -43,6 +44,7 @@ class PostController extends Controller
    */
   public function unlike($id)
   {
+    $post = Post::find($id);
     $like = Like::where('post_id', $id)->where('user_id', Auth::id())->first();
     $like->delete();
 

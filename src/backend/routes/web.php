@@ -33,5 +33,5 @@ Route::group(['middleware' => ['auth']], function () {
 Route::get('/post/edit/{id}', [App\Http\Controllers\PostController::class, 'edit'])->name('post.edit');         // 編集ページ表示
 Route::post('/post/update/{id}', [App\Http\Controllers\PostController::class, 'update'])->name('post.update');  // 更新
 });
-Route::get('/post/like/{id}', 'PostsController@like')->name('post.like');
-Route::get('/post/unlike/{id}', 'PostsController@unlike')->name('post.unlike');
+Route::get('/post/like/{id}', [App\Http\Controllers\PostController::class, 'like'])->name('post.like');
+Route::get('/post/unlike/{id}', [App\Http\Controllers\PostController::class, 'unlike'])->name('post.unlike');
