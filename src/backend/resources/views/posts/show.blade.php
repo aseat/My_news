@@ -3,14 +3,16 @@
 
 <div class="album py-5 bg-light">
     <div class="container">
-
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+      <p class="card-text" style="text-align: center; font-size: 30px;"><b>{{ $post->title }}</b></p>
+      <div class="row" style="width: 50%; margin-left: auto; margin-right: auto;">
         <div class="col">
           <div class="card shadow-sm">
            
             <img src="{{ $post->image_path }}" alt="画像">
             <div class="card-body">
-              <p class="card-text">{{ $post->title }}</p>
+              <b><p class="card-text" style="font-size: 20px">今日の出来事</p></b>
+              
+              <p class="card-text"></p>
               <p class="card-text">{{ $post->text }}</p>
               
               <div class="d-flex justify-content-between align-items-center">
@@ -44,10 +46,10 @@
             </div> 
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <small class="text-muted">{{ $post->created_at->format('Y/m/d') }}</small>
+                  <small class="text-muted">投稿日時：{{ $post->created_at->format('Y/m/d') }}</small>
                 </div>
                 <div class="btn-group">
-                <small class="text-muted">投稿者:{{ $post->user->name }}</small>
+                <small class="text-muted">投稿者：{{ $post->user->name }}</small>
               </div>
               </div>
             </div>
