@@ -1,10 +1,12 @@
 @component('components.header')
 @endcomponent
 
+
 <div class="album py-5 bg-light">
     <div class="container">
+      <meta name="viewport" content="width=device-width,initial-scale=1.0">
       <p class="card-text" style="text-align: center; font-size: 30px;"><b>{{ $post->title }}</b></p>
-      <div class="row" style="width: 50%; margin-left: auto; margin-right: auto;">
+      <div class="row" style="width: 100%; margin-left: auto; margin-right: auto;">
         <div class="col">
           <div class="card shadow-sm">
            
@@ -31,16 +33,20 @@
               </div> 
               <div>
                 @auth
-                @if( ( $post->user_id ) !== ( Auth::user()->id ) )
-                @if($post->is_liked_by_auth_user())
-                  <a href="{{ route('post.unlike', ['id' => $post->id]) }}" class="btn btn-success btn-sm">いいね<span class="badge">{{ $post->likes->count() }}</span></a>
+                @if($like->like_exist(Auth::user()->id,$post->id))
+          <p class="favorite-marke">
+  <a class="js-like-toggle loved" href="" data-postid="{{ $post->id }}"><i class="fas fa-heart"></i></a>
+  <span class="likesCount">{{$post->likes_count}}</span>
+</p>
+@else
+<p class="favorite-marke">
+  <a class="js-like-toggle" href="" data-postid="{{ $post->id }}"><i class="fas fa-heart"></i></a>
+  <span class="likesCount">{{$post->likes_count}}</span>
+</p>
+@endif​
                 
-                @else
-                  <a href="{{ route('post.like', ['id' => $post->id]) }}" class="btn btn-secondary btn-sm">いいね<span class="badge">{{ $post->likes->count() }}</span></a>
-                
-                  @endif
-                  @endif
                   @endauth
+                  
 
            </div>
             </div> 

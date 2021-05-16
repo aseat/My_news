@@ -13,7 +13,7 @@ class Post extends Model
          */
     public function user()
     {
-        return $this->hasOne('App\user', 'id', 'user_id');
+        return $this->belongsTo('App\user', 'id', 'user_id');
     }
     protected $fillable = [
       'image_file_name', 'image_title',
@@ -42,28 +42,9 @@ class Post extends Model
     }
     public function likes()
     {
-      return $this->hasMany(Like::class, 'post_id');
+        return $this->hasMany(Like::class);
     }
+ 
 
-    /**
-  * リプライにLIKEを付いているかの判定
-  *
-  * @return bool true:Likeがついてる false:Likeがついてない
-  */
-  public function is_liked_by_auth_user()
-  {
-    $id = Auth::id();
 
-    $likers = array();
-    foreach($this->likes as $like) {
-      array_push($likers, $like->user_id);
-    }
-
-    if (in_array($id, $likers)) {
-      return true;
-    } else {
-      return false;
-    }
-
-  }
 }

@@ -4,8 +4,9 @@
 
   
 
-      <img src="/images/4353519_m.jpg" style="height: 550px; width: 100%;">
+      <img src="/images/4353519_m.jpg" style="height: 70vh; width: 100%;">
       <div class="col-lg-6 col-md-8 mx-auto">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
         <h1 class="fw-light" style="position: absolute;
         color: #39f520;
         top: 0;
@@ -18,9 +19,9 @@
         margin:0;
         padding:0;
         text-align: center;
-        font-size: 120px;
+        font-size: 120vh;
         text-shadow: 3px 4px 5px #808080;
-        font-size: 7.5rem;">MyNews</h1>
+        font-size: 7.5vw;">MyNews</h1>
         <p>
         <h1 class="fw-light" style="position: absolute;
         color: #39f520;
@@ -34,10 +35,10 @@
         margin:0;
         padding:0;
         text-align: center;
-        font-size: 40px;
-        width: 1000px;
+        font-size: 40vh;
+        width: 1000vh;
         text-shadow: 3px 4px 5px #808080;
-        font-size: 2.5rem;">最近の出来事や話題を共有するサイト</h1>
+        font-size: 2.5vw;">最近の出来事や話題を共有するサイト</h1>
       
        
       </div>
@@ -61,9 +62,9 @@
               <a class="card-text" href="{{ route("post.show", ["id" =>  $post->id]) }}">{{ $post->title }}</a>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <small class="text-muted">{{ $post->created_at->format('Y/m/d')  }}</small>
+                  <small class="text-muted">投稿日時：{{ $post->created_at->format('Y/m/d')  }}</small>
                 </div>
-                <small class="text-muted">投稿者:{{ $post->user->name }}</small>
+                <small class="text-muted">投稿者：{{ $post->user->name }}</small>
                 
               </div>
             </div>
