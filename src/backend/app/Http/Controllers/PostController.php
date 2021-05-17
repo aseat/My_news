@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Post;
-use App\Models\Like;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use JD\Cloudder\Facades\Cloudder;
@@ -100,48 +99,27 @@ class PostController extends Controller
      */
     public function show(Request $request, $id, Post $post)
     {
-        $post = Post::find($id);       // モデルから指定データ取得
-        $posts = Post::withCount('likes')->orderBy('created_at', 'desc')->paginate(10);
-        $like_model = new Like;
-
-        $data = [
-                'posts' => $posts,
-                'like_model'=>$like_model,
-            ];
-
+        $post = Post::find($id);  // モデルから指定データ取得
+        
         return view('posts/show', ['post' => $post]);
     }
-
-    public function ajaxlike(Request $request)
+    public function like_product(Request $request)
     {
-        $id = Auth::user()->id;
-        $post_id = $request->post_id;
-        $like = new Like;
-        $post = Post::findOrFail($post_id);
-
-        // 空でない（既にいいねしている）なら
-        if ($like->like_exist($id, $post_id)) {
-            //likesテーブルのレコードを削除
-            $like = Like::where('post_id', $post_id)->where('user_id', $id)->delete();
-        } else {
-            //空（まだ「いいね」していない）ならlikesテーブルに新しいレコードを作成する
-            $like = new Like;
-            $like->post_id = $request->post_id;
-            $like->user_id = Auth::user()->id;
-            $like->save();
+         if ( $request->input('like_product') == 0) {
+             //ステータスが0のときはデータベースに情報を保存
+             LikeProduct::create([
+                 'product_id' => $request->input('product_id'),
+                  'user_id' => auth()->user()->id,
+             ]);
+            //ステータスが1のときはデータベースに情報を削除
+         } elseif ( $request->input('like_product')  == 1 ) {
+             LikeProduct::where('product_id', "=", $request->input('product_id'))
+                ->where('user_id', "=", auth()->user()->id)
+                ->delete();
         }
-
-        //loadCountとすればリレーションの数を○○_countという形で取得できる（今回の場合はいいねの総数）
-        $postLikesCount = $post->loadCount('likes')->likes_count;
-
-        //一つの変数にajaxに渡す値をまとめる
-        //今回ぐらい少ない時は別にまとめなくてもいいけど一応。笑
-        $json = [
-            'postLikesCount' => $postLikesCount,
-        ];
-        //下記の記述でajaxに引数の値を返す
-        return response()->json($json);
-    }
+         return  $request->input('like_product');
+    } 
+    
 
     /**
      * Show the form for editing the specified resource.

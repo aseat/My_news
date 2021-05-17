@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -50,6 +51,6 @@ class User extends Authenticatable
     // ユーザーがいいねしている投稿
     public function likes()
     {
-        return $this->hasMany(Like::class);
+        return $this->hasMany('App\Models\Like');
     }
 }

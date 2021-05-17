@@ -59,7 +59,9 @@
           <div class="card shadow-sm">
             <img src="{{ $post->image_path }}" alt="画像" >
             <div class="card-body">
-              <a class="card-text" href="{{ route("post.show", ["id" =>  $post->id]) }}">{{ $post->title }}</a>
+              {{ $post->title }}
+            <p>
+              <a class="card-text" href="{{ route("post.show", ["id" =>  $post->id]) }}">続きを読む</a>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <small class="text-muted">投稿日時：{{ $post->created_at->format('Y/m/d')  }}</small>

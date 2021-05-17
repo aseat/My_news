@@ -6,6 +6,8 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.79.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    
     <title>My News</title>
 
     <link rel="canonical" href="https://getbootstrap.jp/docs/5.0/examples/album/">

@@ -1,9 +1,9 @@
 <?php
 
 namespace App;
-use App\Models\Like;
+
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
+
 class Post extends Model
 {
     /**
@@ -13,12 +13,11 @@ class Post extends Model
          */
     public function user()
     {
-        return $this->belongsTo('App\user', 'id', 'user_id');
+        return $this->hasOne('App\user', 'id', 'user_id');
     }
     protected $fillable = [
       'image_file_name', 'image_title',
     ];
-    
 
     public function rules()
     {
@@ -40,11 +39,4 @@ class Post extends Model
             'image.max'      => 'ファイルサイズを10MB以下に設定してください。',
         ];
     }
-    public function likes()
-    {
-        return $this->hasMany(Like::class);
-    }
- 
-
-
 }

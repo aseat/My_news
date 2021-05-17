@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use App\Post;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -19,9 +19,9 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
-    public function likes()
+    public function favorites()
     {
-        return $this->hasMany(Like::class);
+        return $this->belongsToMany('App\Post')->withTimestamps();
     }
 
     /**

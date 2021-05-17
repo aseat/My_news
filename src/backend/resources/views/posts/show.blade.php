@@ -30,25 +30,26 @@
                 {{ Form::close() }}
               @endif
                 @endauth
-              </div> 
-              <div>
-                @auth
-                @if($like->like_exist(Auth::user()->id,$post->id))
-          <p class="favorite-marke">
-  <a class="js-like-toggle loved" href="" data-postid="{{ $post->id }}"><i class="fas fa-heart"></i></a>
-  <span class="likesCount">{{$post->likes_count}}</span>
-</p>
-@else
-<p class="favorite-marke">
-  <a class="js-like-toggle" href="" data-postid="{{ $post->id }}"><i class="fas fa-heart"></i></a>
-  <span class="likesCount">{{$post->likes_count}}</span>
-</p>
-@endif​
-                
-                  @endauth
+
+              </div>
+              
+ 
+              @if(auth()->user())
+              @if(isset($post->like_posts[0]))
+                  <a class="toggle_wish" post_id="{{ $post->id }}" like_post="1">
+                       <i class="fas fa-heart"></i>
+                  </a>
+              @else
+              <a class="toggle_wish" post_id="{{ $post->id }}" like_post="1">
+                      <i  class="far fa-heart"></i>
+                  </a> 
+              @endif
+          @endif
+
+    
                   
 
-           </div>
+          
             </div> 
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
