@@ -8,9 +8,9 @@
       <p class="card-text" style="text-align: center; font-size: 30px;"><b>{{ $post->title }}</b></p>
       <div class="row" style="width: 100%; margin-left: auto; margin-right: auto;">
         <div class="col">
-          <div class="card shadow-sm">
+          <div class="card shadow-sm" style="border-radius: 10px 10px 10px 10px; background-color: #fff0f5;">
            
-            <img src="{{ $post->image_path }}" alt="画像">
+            <img src="{{ $post->image_path }}" alt="画像" style="border-radius: 10px 10px 0px 0px;">
             <div class="card-body">
               <b><p class="card-text" style="font-size: 20px">今日の出来事</p></b>
               

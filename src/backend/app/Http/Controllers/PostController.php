@@ -103,21 +103,21 @@ class PostController extends Controller
         
         return view('posts/show', ['post' => $post]);
     }
-    public function like_product(Request $request)
+    public function like_post(Request $request)
     {
-         if ( $request->input('like_product') == 0) {
+         if ( $request->input('like_post') == 0) {
              //ステータスが0のときはデータベースに情報を保存
-             LikeProduct::create([
-                 'product_id' => $request->input('product_id'),
+             LikePost::create([
+                 'post_id' => $request->input('post_id'),
                   'user_id' => auth()->user()->id,
              ]);
             //ステータスが1のときはデータベースに情報を削除
-         } elseif ( $request->input('like_product')  == 1 ) {
-             LikeProduct::where('product_id', "=", $request->input('product_id'))
+         } elseif ( $request->input('like_post')  == 1 ) {
+             LikePost::where('post_id', "=", $request->input('post_id'))
                 ->where('user_id', "=", auth()->user()->id)
                 ->delete();
         }
-         return  $request->input('like_product');
+         return  $request->input('like_post');
     } 
     
 

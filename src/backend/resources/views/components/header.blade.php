@@ -70,8 +70,8 @@
     <div class="container">
       <a href="/" class="navbar-brand d-flex align-items-center">
         
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><img src="/images/browser.png" style="height: 30px; width: 30px;"></svg>
-        <strong><img src="/images/mynews.png" style="height: 30px; width: 100px;"></strong>
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2" viewBox="0 0 24 24"><img src="/images/browser.png" style="height: 30px; width: 30px;"></svg>
+        <strong><img src="/images/mynews.png" style="height: 32px; width: 102px;"></strong>
       </a>
       
       @guest
