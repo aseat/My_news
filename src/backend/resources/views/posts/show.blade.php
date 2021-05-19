@@ -32,20 +32,11 @@
                 @endauth
 
               </div>
-              
- 
-              @if(auth()->user())
-              @if(isset($post->like_posts[0]))
-                  <a class="toggle_wish" post_id="{{ $post->id }}" like_post="1">
-                       <i class="fas fa-heart"></i>
-                  </a>
-              @else
-              <a class="toggle_wish" post_id="{{ $post->id }}" like_post="1">
-                      <i  class="far fa-heart"></i>
-                  </a> 
-              @endif
-          @endif
+            </div>
 
+
+ 
+              
     
                   
 
