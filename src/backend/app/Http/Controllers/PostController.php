@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Post;
+use App\Models\Like;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use JD\Cloudder\Facades\Cloudder;
@@ -16,6 +17,41 @@ class PostController extends Controller
         $this->middleware(['auth', 'verified'])->only(['like', 'unlike']);
     }
 
+/**
+  * 引数のIDに紐づくリプライにLIKEする
+  *
+  * @param $id リプライID
+  * @return \Illuminate\Http\RedirectResponse
+  */
+  public function like($id)
+  {
+    $post = Post::find($id);
+    Like::create([
+      'post_id' => $id,
+      'user_id' => Auth::id(),
+    ]);
+
+    session()->flash('success', 'You Liked the Post.');
+
+    return view('posts/show', ['post' => $post]);
+  }
+
+  /**
+   * 引数のIDに紐づくリプライにUNLIKEする
+   *
+   * @param $id リプライID
+   * @return \Illuminate\Http\RedirectResponse
+   */
+  public function unlike($id)
+  {
+    $post = Post::find($id);
+    $like = Like::where('post_id', $id)->where('user_id', Auth::id())->first();
+    $like->delete();
+
+    session()->flash('success', 'You Unliked the post.');
+
+    return view('posts/show', ['post' => $post]);
+  }
 
 
     /**
@@ -65,7 +101,7 @@ class PostController extends Controller
         if ($image = $request->file('image')) {
             $image_path = $image->getRealPath();
             Cloudder::upload($image_path, null);
-            //直前にアップロードされた画像のpublicIdを取得する。
+        
             $publicId = Cloudder::getPublicId();
             $logoUrl = Cloudder::secureShow($publicId, [
                 'width'     => 1024,
@@ -103,22 +139,7 @@ class PostController extends Controller
         
         return view('posts/show', ['post' => $post]);
     }
-    public function like_post(Request $request)
-    {
-         if ( $request->input('like_post') == 0) {
-             //ステータスが0のときはデータベースに情報を保存
-             LikePost::create([
-                 'post_id' => $request->input('post_id'),
-                  'user_id' => auth()->user()->id,
-             ]);
-            //ステータスが1のときはデータベースに情報を削除
-         } elseif ( $request->input('like_post')  == 1 ) {
-             LikePost::where('post_id', "=", $request->input('post_id'))
-                ->where('user_id', "=", auth()->user()->id)
-                ->delete();
-        }
-         return  $request->input('like_post');
-    } 
+    
     
 
     /**
@@ -151,22 +172,18 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->text = $request->text;
         if ($image = $request->file('image')) {
-            if (isset($post->public_id)) {
-                Cloudder::destroyImage($post->public_id);
-            }
             $image_path = $image->getRealPath();
             Cloudder::update($image_path, null);
-            //直前にアップロードされた画像のpublicIdを取得する。
+        
             $publicId = Cloudder::getPublicId();
             $logoUrl = Cloudder::secureShow($publicId, [
-                'width'     => 600,
-                'height'    => 600
+                'width'     => 1024,
+                'height'    => 720
             ]);
             $post->image_path = $logoUrl;
             $post->public_id  = $publicId;
         }
-
-
+        
         $post->save();
         return redirect()->route('post.show', ['id' => $post->id]);
     }

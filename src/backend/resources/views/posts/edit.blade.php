@@ -28,8 +28,7 @@
                             
                         {{ Form::text('text', null, ['placeholder'=>'内容を入力', 'class'=>'form-control']) }}
                         <p>
-                        
-                      </div>
+                       </div>
                       <div class="form-group row">
                         <div class="col-md-6">
                           {{ Form::label('image', '画像   ') }}

@@ -15,7 +15,8 @@
               <b><p class="card-text" style="font-size: 20px">今日の出来事</p></b>
               
               <p class="card-text"></p>
-              <p class="card-text">{{ $post->text }}</p>
+              <example-component><p class="card-text">{{ $post->text }}</example-component></p>
+              
               
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
@@ -33,12 +34,20 @@
 
               </div>
             </div>
+            <div>
+              @auth
+              @if( ( $post->user_id ) !== ( Auth::user()->id ) )
+              @if($post->is_liked_by_auth_user())
+                <a href="{{ route('post.unlike', ['id' => $post->id]) }}" class="btn btn-success btn-sm">いいね<span class="badge">{{ $post->likes->count() }}</span></a>
+               
+              @else
+                <a href="{{ route('post.like', ['id' => $post->id]) }}" class="btn btn-secondary btn-sm">いいね<span class="badge">{{ $post->likes->count() }}</span></a>
+               
+                @endif
+                @endif
+                @endauth
 
-
- 
-              
-    
-                  
+         </div> 
 
           
             </div> 

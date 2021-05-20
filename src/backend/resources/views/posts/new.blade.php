@@ -30,14 +30,14 @@
                         <p>
                         
                       </div>
-                      <div class="form-group row">
+                      {{-- <div class="form-group row">
                         <div class="col-md-6">
                           {{ Form::label('image', '画像   ') }}
                      <p>
                       
                       {{ Form::file('image', null, ['placeholder'=>'内容を入力']) }}
                     </div>
-                  </div>
+                  </div> --}}
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                               {{ Form::submit('投稿ボタン', ['class' => 'btn btn-sm btn-outline-secondary']) }}
