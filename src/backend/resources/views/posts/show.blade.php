@@ -11,6 +11,7 @@
           <div class="card shadow-sm" style="border-radius: 10px 10px 10px 10px; background-color: #fff0f5;">
            
             <img src="{{ $post->image_path }}" alt="画像" style="border-radius: 10px 10px 0px 0px;">
+          </div>
             <div class="card-body">
               <b><p class="card-text" style="font-size: 20px">今日の出来事</p></b>
               

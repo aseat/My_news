@@ -98,17 +98,13 @@ class PostController extends Controller
         $post->user_id = $request->user()->id;
         $post->title = $request->title;
         $post->text = $request->text;
-        if ($image = $request->file('image')) {
-            $image_path = $image->getRealPath();
-            Cloudder::upload($image_path, null);
+        $image = $request->file('image');
         
-            $publicId = Cloudder::getPublicId();
-            $logoUrl = Cloudder::secureShow($publicId, [
-                'width'     => 1024,
-                'height'    => 720
-            ]);
-            $post->image_path = $logoUrl;
-            $post->public_id  = $publicId;
+        if($request->hasFile('image')){
+            $path = \Storage::put('/public', $image);
+            $path = explode('/', $path);
+        }else{
+            $path = null;
         }
         $request->validate(
             [

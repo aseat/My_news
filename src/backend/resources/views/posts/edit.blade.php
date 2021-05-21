@@ -33,7 +33,6 @@
                         <div class="col-md-6">
                           {{ Form::label('image', '画像   ') }}
                      <p>
-                      
                       {{ Form::file('image', null, ['placeholder'=>'内容を入力']) }}
                     </div>
                   </div>
