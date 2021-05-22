@@ -12,7 +12,10 @@
         @foreach ($posts as $post)
         <div class="col">
           <div class="card shadow-sm" style="border-radius: 10px 10px 10px 10px; background-color: #FEDCBD;">
-            <img src="{{ '/storage/' . $post['image']}}" class='w-100 mb-3'/>
+            @if($post->image_path == null)
+            @else
+            <img src="{{ $post->image_path }}"  style="border-radius: 10px 10px 0px 0px;">
+            @endif
             <div class="card-body">
              <p style="font-size: 30px;">{{ $post->title }}</p>
               <a class="card-text" style="text-decoration: none;" href="{{ route("post.show", ["id" =>  $post->id]) }}" >>>続きを読む</a>

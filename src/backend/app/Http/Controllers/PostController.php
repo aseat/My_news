@@ -98,14 +98,19 @@ class PostController extends Controller
         $post->user_id = $request->user()->id;
         $post->title = $request->title;
         $post->text = $request->text;
-        $image = $request->file('image');
-        
-        if($request->hasFile('image')){
-            $path = \Storage::put('/public', $image);
-            $path = explode('/', $path);
-        }else{
-            $path = null;
+       
+        if ($image = $request->file('image')) {
+            $image_path = $image->getRealPath();
+            Cloudder::upload($image_path, null);
+            $publicId = Cloudder::getPublicId();
+            $logoUrl = Cloudder::secureShow($publicId, [
+                'width'     => 1024,
+                'height'    => 724
+            ]);
+            $post->image_path = $logoUrl;
+            $post->public_id  = $publicId;
         }
+
         $request->validate(
             [
             'title' => 'required|unique:posts',
@@ -116,12 +121,14 @@ class PostController extends Controller
                 'text.required'  => '内容を入力してください。',
          ]
         );
-
+        
+ 
 
         $post->save();
 
         return redirect('/');
     }
+
 
     /**
      * Display the specified resource.
@@ -169,7 +176,7 @@ class PostController extends Controller
         $post->text = $request->text;
         if ($image = $request->file('image')) {
             $image_path = $image->getRealPath();
-            Cloudder::update($image_path, null);
+            Cloudder::upload($image_path, null);
         
             $publicId = Cloudder::getPublicId();
             $logoUrl = Cloudder::secureShow($publicId, [

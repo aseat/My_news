@@ -8,8 +8,7 @@
               <div class="card-header" style="font-size: 20px; font-weight:bold; color:black; text-align: center;">{{ __('編集') }}</div>
 
               <div class="card-body">
-  <!-- Form::model ： 編集内容を表示してくれる -->
-  {{ Form::model($post, ['route' => ['post.update', $post->id]]) }}
+  {{ Form::model($post, ['route' => ['post.update', $post->id],'enctype'  => "multipart/form-data"]) }}
   @foreach ($errors->all() as $error)
   <li>{{$error}}</li>
   @endforeach
