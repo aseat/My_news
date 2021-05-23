@@ -2,6 +2,7 @@
 
 namespace App;
 use App\Models\Like;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 
