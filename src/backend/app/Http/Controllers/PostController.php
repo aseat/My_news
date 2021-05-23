@@ -113,7 +113,7 @@ class PostController extends Controller
 
         $request->validate(
             [
-            'title' => 'required|unique:posts',
+            'title' => 'required',
             'text' => 'required',
  ],
             [
@@ -187,6 +187,17 @@ class PostController extends Controller
             $post->public_id  = $publicId;
         }
         
+        $request->validate(
+            [
+            'title' => 'required',
+            'text' => 'required',
+ ],
+            [
+                'title.required' => 'タイトルを入力してください。',
+                'text.required'  => '内容を入力してください。',
+         ]
+        );
+
         $post->save();
         return redirect()->route('post.show', ['id' => $post->id]);
     }
