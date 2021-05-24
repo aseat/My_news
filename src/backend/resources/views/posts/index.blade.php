@@ -24,7 +24,6 @@
                   <small class="text-muted">投稿日時：{{ $post->created_at->format('Y/m/d')  }}</small>
                 </div>
                 <small class="text-muted">投稿者：{{ $post->user->name }}</small>
-                
               </div>
             </div>
           </div>
