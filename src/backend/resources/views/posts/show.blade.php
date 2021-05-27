@@ -9,9 +9,10 @@
       <div class="row" style="width: 80%; margin-left: auto; margin-right: auto;">
         <div class="col">
           <div class="card shadow-sm" style="border-radius: 10px 10px 10px 10px; background-color: #fff0f5;">
-           
+            @if($post->image_path == null)
+            @else
             <img src="{{ $post->image_path }}" alt="画像" style="border-radius: 10px 10px 0px 0px;">
-        
+        @endif
             <div class="card-body">
               <b><p class="card-text" style="font-size: 20px">今日の出来事</p></b>
               
