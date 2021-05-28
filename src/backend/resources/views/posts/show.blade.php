@@ -19,7 +19,17 @@
               <p class="card-text"></p>
               <example-component><p class="card-text">{{ $post->text }}</example-component></p>
               
-              
+              @auth
+              @if( ( $post->user_id ) !== ( Auth::user()->id ) )
+              @if($post->is_liked_by_auth_user())
+                <a href="{{ route('post.unlike', ['id' => $post->id]) }}" class="btn btn-success btn-sm">いいね<span class="badge">{{ $post->likes->count() }}</span></a>
+               
+              @else
+                <a href="{{ route('post.like', ['id' => $post->id]) }}" class="btn btn-secondary btn-sm">いいね<span class="badge">{{ $post->likes->count() }}</span></a>
+               
+                @endif
+                @endif
+                @endauth
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <a type="button" class="btn btn-sm btn-outline-secondary" href='{{ route("post.list") }}'>戻る</a>
@@ -37,17 +47,7 @@
               </div>
             </div>
             <div>
-              @auth
-              @if( ( $post->user_id ) !== ( Auth::user()->id ) )
-              @if($post->is_liked_by_auth_user())
-                <a href="{{ route('post.unlike', ['id' => $post->id]) }}" class="btn btn-success btn-sm">いいね<span class="badge">{{ $post->likes->count() }}</span></a>
-               
-              @else
-                <a href="{{ route('post.like', ['id' => $post->id]) }}" class="btn btn-secondary btn-sm">いいね<span class="badge">{{ $post->likes->count() }}</span></a>
-               
-                @endif
-                @endif
-                @endauth
+              
 
          </div> 
 
