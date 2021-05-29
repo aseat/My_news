@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Post;
+use Storage;
 use App\Models\Like;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use JD\Cloudder\Facades\Cloudder;
+
 
 class PostController extends Controller
 {
@@ -100,17 +102,12 @@ class PostController extends Controller
         $post->text = $request->text;
        
         if ($image = $request->file('image')) {
-            $image_path = $image->getRealPath();
-            Cloudder::upload($image_path, null);
-            $publicId = Cloudder::getPublicId();
-            $logoUrl = Cloudder::secureShow($publicId, [
-                'width'     => 1024,
-                'height'    => 724
-            ]);
-            $post->image_path = $logoUrl;
-            $post->public_id  = $publicId;
+        
+      
+      $path = Storage::disk('s3')->putFile('myprefix', $image, 'public');
+    
+      $post->image_path = Storage::disk('s3')->url($path);
         }
-
         $request->validate(
             [
             'title' => 'required',
@@ -175,17 +172,12 @@ class PostController extends Controller
         $post->title = $request->title;
         $post->text = $request->text;
         if ($image = $request->file('image')) {
-            $image_path = $image->getRealPath();
-            Cloudder::upload($image_path, null);
         
-            $publicId = Cloudder::getPublicId();
-            $logoUrl = Cloudder::secureShow($publicId, [
-                'width'     => 1024,
-                'height'    => 720
-            ]);
-            $post->image_path = $logoUrl;
-            $post->public_id  = $publicId;
-        }
+      
+            $path = Storage::disk('s3')->putFile('myprefix', $image, 'public');
+          
+            $post->image_path = Storage::disk('s3')->url($path);
+              }
         
         $request->validate(
             [

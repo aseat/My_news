@@ -14,7 +14,7 @@ class AddImagePathAndPublicIdToPostsTable extends Migration
     public function up()
     {
         Schema::table('posts', function (Blueprint $table) {
-            $table->text('image_path')->nullable();
+            $table->text('image_pat')->nullable();
             $table->text('public_id')->nullable();
         });
     }
