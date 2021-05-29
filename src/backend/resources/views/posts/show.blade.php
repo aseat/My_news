@@ -14,7 +14,7 @@
             <img src="{{ $post->image_path }}" alt="画像" style="border-radius: 10px 10px 0px 0px;">
         @endif
             <div class="card-body">
-              <b><p class="card-text" style="font-size: 20px">今日の出来事</p></b>
+              <b><p class="card-text" style="font-size: 20px">今日あったいいこと</p></b>
               
               <p class="card-text"></p>
               <example-component><p class="card-text">{{ $post->text }}</example-component></p>
