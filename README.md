@@ -1,4 +1,3 @@
-# My_news
 ![PicsArt_05-09-12 04 35](https://user-images.githubusercontent.com/73108756/120105625-a99ea880-c194-11eb-9f67-c7b8602d8663.jpg)
 
 
