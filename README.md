@@ -1,6 +1,8 @@
 # My_news
+![PicsArt_05-09-12 04 35](https://user-images.githubusercontent.com/73108756/120105625-a99ea880-c194-11eb-9f67-c7b8602d8663.jpg)
 
-概要
+
+# 概要
 URL:http://mynewseverydayhappy.tk:10080/
 
 自分のあった出来事を書く日記帳です！
@@ -8,14 +10,14 @@ URL:http://mynewseverydayhappy.tk:10080/
 
 ゲストログインを押すと簡単にログインができます。
 
-作成期間
+# 作成期間
 
 2020/04/13 Laravel学習開始
 2020/04/30 本リポジトリ作成
 2020/05/30 各機能実装完了後、デプロイ
 バージョンアップを継続
 
-開発環境
+# 開発環境
 macOS Big Sur 11.3
 PHP 8.0.5
 Laravel Framework 8.40.0
@@ -24,20 +26,21 @@ Mysql
 Docker
 AWS(EC2,Route53)
  
-おもな機能
+#おもな機能
 
-ユーザー
+#ユーザー
 
 ・ユーザー登録、ログイン、ログアウト、ゲストログイン
 ・同じメールアドレスでは登録できない
 
-記事
+#記事
 
 ・記事のCRUD処理
 ・記事の部分検索機能
 ・いいね機能
 ・レスポンシブ対応
 
+#![browser-98386_1280](https://user-images.githubusercontent.com/73108756/120105614-a1466d80-c194-11eb-9c65-bd595d9356fb.png)
 今後実装したいこと
 
 ・画像投稿機能
