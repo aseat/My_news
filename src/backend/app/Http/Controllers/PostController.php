@@ -171,13 +171,7 @@ class PostController extends Controller
 
         $post->title = $request->title;
         $post->text = $request->text;
-        if ($image = $request->file('image')) {
         
-      
-            $path = Storage::disk('s3')->putFile('myprefix', $image, 'public');
-          
-            $post->image_path = Storage::disk('s3')->url($path);
-              }
         
         $request->validate(
             [
