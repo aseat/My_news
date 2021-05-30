@@ -1,5 +1,4 @@
-<img width="705" alt="スクリーンショット 2021-05-30 22 20 39" src="https://user-images.githubusercontent.com/73108756/120105782-698bf580-c195-11eb-8d25-c5c7e68ee36b.png">
-
+<img width="1399" alt="スクリーンショット 2021-05-30 22 22 51" src="https://user-images.githubusercontent.com/73108756/120105844-a657ec80-c195-11eb-9b52-e6e4221afa4c.png">
 
 
 # 概要
