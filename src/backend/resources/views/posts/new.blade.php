@@ -30,10 +30,7 @@
                         <p>
                         
                       </div>
-
-                      
-
-                        <div class="form-group row mb-0">
+                       <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                               {{ Form::submit('投稿ボタン', ['class' => 'btn btn-sm btn-outline-secondary']) }}
                               <a class="btn btn-sm btn-outline-secondary" href='/'>一覧に戻る</a>
