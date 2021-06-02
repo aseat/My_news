@@ -18,17 +18,12 @@
                               {{ Form::label('title', 'タイトル(必須)   ') }}
                             
                           {{ Form::text('title', null, ['placeholder'=>'タイトルを入力', 'class'=>'form-control']) }}
-                            
                           <p>
-                        
                         </div>
-  
                           <div class="col-md-6" style="width: 100%;">
                             {{ Form::label('text', '内容(必須)   ') }}
-                            
                         {{ Form::text('text', null, ['placeholder'=>'内容を入力', 'class'=>'form-control','rows'=>'10', 'cols'=>'60']) }}
-                        <p>
-                        
+                        <p> 
                       </div>
                        <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
