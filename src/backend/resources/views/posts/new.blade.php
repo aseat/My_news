@@ -13,8 +13,7 @@
                     @foreach ($errors->all() as $error)
                     <li>{{$error}}</li>
                     @endforeach
-                        
-                            <div class="col-md-6" style="width: 100%;">
+                         <div class="col-md-6" style="width: 100%;">
                               {{ Form::label('title', 'タイトル(必須)   ') }}
                             
                           {{ Form::text('title', null, ['placeholder'=>'タイトルを入力', 'class'=>'form-control']) }}
