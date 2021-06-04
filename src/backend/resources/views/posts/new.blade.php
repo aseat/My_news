@@ -7,8 +7,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header" style="font-size: 20px; font-weight:bold; color:black; text-align: center;">{{ __('新規投稿') }}</div>
-  
-                <div class="card-body">
+                 <div class="card-body">
                     {{ Form::open(['route' => 'post.store','enctype'  => "multipart/form-data"]) }}
                     @foreach ($errors->all() as $error)
                     <li>{{$error}}</li>
