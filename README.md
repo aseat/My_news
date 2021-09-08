@@ -26,7 +26,7 @@ Mysql
 Docker
 AWS(EC2,Route53)
  
-# おもな機能
+# 主な機能
 
 ●ユーザー
 
