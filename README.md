@@ -1,7 +1,5 @@
 
 
-https://user-images.githubusercontent.com/73108756/132456585-6a4f8c31-f11d-4d57-9057-00cd33e6bfc1.mov
-
 <img width="1399" alt="スクリーンショット 2021-05-30 22 22 51" src="https://user-images.githubusercontent.com/73108756/120105844-a657ec80-c195-11eb-9b52-e6e4221afa4c.png">
 
 
@@ -11,6 +9,8 @@ https://user-images.githubusercontent.com/73108756/132456585-6a4f8c31-f11d-4d57-
 
 
 ゲストログインを押すと簡単にログインができます。
+https://gyazo.com/2ff4f8e048e46bb6eea0d21590710dd5
+
 
 # 作成期間
 
@@ -37,8 +37,16 @@ AWS(EC2,Route53)
 
 ・記事のCRUD処理
 ・記事の部分検索機能
-・いいね機能
 ・レスポンシブ対応
+
+新規投稿
+https://gyazo.com/2f55d104e08b4babaf29c9ab96cd3ced
+
+編集&削除
+https://gyazo.com/df5a32f3c4a39a530573e9a12e0cc804
+
+検索機能
+https://gyazo.com/d31832087da08e3b543711afa659b3db
 
 ●工夫した点
 ・レスポンシブ対応によりスマホやPCから閲覧しやすくした
