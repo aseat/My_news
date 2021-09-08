@@ -2,7 +2,6 @@
 
 
 # 概要
-URL:http://mynewseverydayhappy.tk:10080/
 
 自分のあった出来事を書く日記帳です！
 
