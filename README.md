@@ -45,15 +45,18 @@ AWS(EC2,Route53)
 
 ・レスポンシブ対応
 
-新規投稿
+・新規投稿
+
 https://gyazo.com/2f55d104e08b4babaf29c9ab96cd3ced
 
 
-編集&削除
+・編集&削除
+
 https://gyazo.com/df5a32f3c4a39a530573e9a12e0cc804
 
 
-検索機能
+・検索機能
+
 https://gyazo.com/d31832087da08e3b543711afa659b3db
 
 ## 工夫した点
